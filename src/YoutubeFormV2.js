@@ -5,7 +5,7 @@ Created: Sat Dec 18 2021 10:13:19 GMT+0530 (India Standard Time)
 Copyright (c) Geekofia 2021 and beyond
 */
 
-import { useFormik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./YoutubeForm.module.css";
 
@@ -36,73 +36,61 @@ const validationSchema = Yup.object({
   channel: Yup.string().required("Channel is required"),
 });
 
-// YoutubeForm component
+// YoutubeFormV2 component
 const YoutubeFormV2 = () => {
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema,
-  });
-
   return (
     <div className={styles.form_div}>
-      <form onSubmit={formik.handleSubmit}>
-        {/* name input */}
-        <div className={styles.wrapper_div}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            // name attribute is required
-            name="name"
-            id="name"
-            placeholder="Chadan Kumar Mandal"
-            {...formik.getFieldProps("name")}
-          />
-          {formik.errors.name && formik.touched.name && (
-            <div className={styles.error_div}>
-              <p>{formik.errors.name}</p>
-            </div>
-          )}
-        </div>
-        {/* email input */}
-        <div className={styles.wrapper_div}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            // name attribute is required
-            name="email"
-            id="email"
-            placeholder="example@domain.xyz"
-            {...formik.getFieldProps("email")}
-          />
-          {formik.errors.email && formik.touched.email && (
-            <div className={styles.error_div}>
-              <p>{formik.errors.email}</p>
-            </div>
-          )}
-        </div>
-        {/* channel input */}
-        <div className={styles.wrapper_div}>
-          <label htmlFor="channel">Channel</label>
-          <input
-            type="text"
-            // name attribute is required
-            name="channel"
-            id="channel"
-            placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
-            {...formik.getFieldProps("channel")}
-          />
-          {formik.errors.channel && formik.touched.channel && (
-            <div className={styles.error_div}>
-              <p>{formik.errors.channel}</p>
-            </div>
-          )}
-        </div>
-        {/* submit button */}
-        <div className={styles.wrapper_div}>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        <Form className={styles.form}>
+          {/* name Field */}
+          <div className={styles.wrapper_div}>
+            <label htmlFor="name">Name</label>
+            <Field
+              type="text"
+              // name attribute is required
+              name="name"
+              id="name"
+              placeholder="Chadan Kumar Mandal"
+              className={styles.input_field}
+            />
+            <ErrorMessage name="name" />
+          </div>
+          {/* email Field */}
+          <div className={styles.wrapper_div}>
+            <label htmlFor="email">Email</label>
+            <Field
+              type="email"
+              // name attribute is required
+              name="email"
+              id="email"
+              placeholder="example@domain.xyz"
+              className={styles.input_field}
+            />
+            <ErrorMessage name="email" />
+          </div>
+          {/* channel Field */}
+          <div className={styles.wrapper_div}>
+            <label htmlFor="channel">Channel</label>
+            <Field
+              type="text"
+              // name attribute is required
+              name="channel"
+              id="channel"
+              placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
+              className={styles.input_field}
+            />
+            <ErrorMessage name="channel" />
+          </div>
+          {/* submit button */}
+          <div className={styles.wrapper_div}>
+            <button type="submit">Submit</button>
+          </div>
+        </Form>
+      </Formik>
     </div>
   );
 };
