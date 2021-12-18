@@ -1,10 +1,10 @@
 import "./App.css";
-import YoutubeForm from "./YoutubeForm";
+import YoutubeFormV2 from "./YoutubeFormV2";
 
 function App() {
   return (
     <div className="App">
-      <YoutubeForm />
+      <YoutubeFormV2 />
     </div>
   );
 }
