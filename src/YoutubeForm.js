@@ -12,17 +12,52 @@ import styles from "./YoutubeForm.module.css";
 // 1. pass initial values object to formik
 // 2. add formik.handleChange and formik.values to the form inputs
 // 3. add formik.handleSubmit to the form
+// 4. add validation function to formik
 
+// initial values object
+const initialValues = {
+  name: "",
+  email: "",
+  channel: "",
+};
+
+// onSubmit function
+const onSubmit = (values) => {
+  console.log(values);
+};
+
+// validation function
+const validate = (values) => {
+  // define errors object
+  let errors = {};
+
+  // rules for name
+  if (!values.name) {
+    errors.name = "Name is required";
+  }
+
+  // rules for email
+  if (!values.email) {
+    errors.email = "Email is required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Email is invalid";
+  }
+
+  // rules for channel
+  if (!values.channel) {
+    errors.channel = "Channel is required";
+  }
+
+  // return errors object
+  return errors;
+};
+
+// YoutubeForm component
 const YoutubeForm = () => {
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      channel: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
+    initialValues,
+    onSubmit,
+    validate,
   });
 
   return (
