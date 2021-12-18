@@ -83,6 +83,7 @@ button[type="submit"]:hover {
   color: rgb(255, 57, 57);
   text-align: end;
   font-weight: 600;
+  font-size: 0.8rem;
 }
 
 textarea {
@@ -92,20 +93,20 @@ textarea {
   max-height: 150px;
 }
 
-.social_wrapper {
+.group_wrapper {
   width: 100%;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
 }
 
-.social_heading {
+.group_heading {
   padding: 0 0 0.5rem 0;
   display: flex;
   align-items: center;
 }
 
-.social_title {
+.group_title {
   font-weight: 800;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -113,7 +114,7 @@ textarea {
   font-family: "Quicksand", sans-serif;
 }
 
-.social_bar {
+.group_bar {
   flex: 1;
   height: 1px;
   margin: 0 1rem;

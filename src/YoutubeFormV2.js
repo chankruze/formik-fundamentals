@@ -7,7 +7,14 @@ Copyright (c) Geekofia 2021 and beyond
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaGithub,
+  FaPhone,
+  FaPhoneAlt,
+} from "react-icons/fa";
 import styles from "./YoutubeForm.module.css";
 
 // Steps to add formik to a form:
@@ -29,6 +36,7 @@ const initialValues = {
     instagram: "",
     github: "",
   },
+  phoneNumbers: ["", ""],
 };
 
 // onSubmit function
@@ -131,35 +139,85 @@ const YoutubeFormV2 = () => {
             </Field>
           </div>
           {/* social */}
-          <div className={styles.social_wrapper}>
-            <div className={styles.social_heading}>
-              <div className={styles.social_bar}></div>
-              <p className={styles.social_title}>Social</p>
-              <div className={styles.social_bar}></div>
+          <div className={styles.group_wrapper}>
+            <div className={styles.group_heading}>
+              <div className={styles.group_bar}></div>
+              <p className={styles.group_title}>Social</p>
+              <div className={styles.group_bar}></div>
             </div>
             <div className={styles.handle_wrapper}>
               <label htmlFor="facebook">
                 <FaFacebook size={32} />
               </label>
-              <Field type="text" name="social.facebook" id="facebook" />
+              <Field
+                type="text"
+                name="social.facebook"
+                id="facebook"
+                placeholder="chankruze"
+              />
             </div>
             <div className={styles.handle_wrapper}>
               <label htmlFor="twitter">
                 <FaTwitter size={32} />
               </label>
-              <Field type="text" name="social.twitter" id="twitter" />
+              <Field
+                type="text"
+                name="social.twitter"
+                id="twitter"
+                placeholder="chankruze"
+              />
             </div>
             <div className={styles.handle_wrapper}>
               <label htmlFor="instagram">
                 <FaInstagram size={32} />
               </label>
-              <Field type="text" name="social.instagram" id="instagram" />
+              <Field
+                type="text"
+                name="social.instagram"
+                id="instagram"
+                placeholder="chankruze"
+              />
             </div>
             <div className={styles.handle_wrapper}>
               <label htmlFor="github">
                 <FaGithub size={32} />
               </label>
-              <Field type="text" name="social.github" id="github" />
+              <Field
+                type="text"
+                name="social.github"
+                id="github"
+                placeholder="chankruze"
+              />
+            </div>
+          </div>
+          {/* phone number fields */}
+          <div className={styles.group_wrapper}>
+            <div className={styles.group_heading}>
+              <div className={styles.group_bar}></div>
+              <p className={styles.group_title}>phone numbers</p>
+              <div className={styles.group_bar}></div>
+            </div>
+            <div className={styles.handle_wrapper}>
+              <label htmlFor="phone 1">
+                <FaPhone size={32} />
+              </label>
+              <Field
+                type="text"
+                name="phoneNumbers[0]"
+                id="primaryPhone"
+                placeholder="0123456789"
+              />
+            </div>
+            <div className={styles.handle_wrapper}>
+              <label htmlFor="twitter">
+                <FaPhoneAlt size={32} />
+              </label>
+              <Field
+                type="text"
+                name="phoneNumbers[1]"
+                id="secondaryPhone"
+                placeholder="0123456789"
+              />
             </div>
           </div>
           {/* submit button */}
