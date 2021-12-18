@@ -32,11 +32,12 @@ Copyright (c) Geekofia 2021 and beyond
 }
 
 label {
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
   font-size: 1.1rem;
   font-weight: 700;
   color: #212121;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
+  text-transform: capitalize;
 }
 
 input,
@@ -88,5 +89,45 @@ textarea {
   resize: vertical;
   width: 100%;
   min-height: 100px;
-  max-height: 250px;
+  max-height: 150px;
+}
+
+.social_wrapper {
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.social_heading {
+  padding: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.social_title {
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #a1a1a1;
+  font-family: "Quicksand", sans-serif;
+}
+
+.social_bar {
+  flex: 1;
+  height: 1px;
+  margin: 0 1rem;
+  background: #2e2e2e;
+  opacity: 0.2;
+}
+
+.handle_wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.handle_wrapper svg {
+  color: #9b9b9b;
 }

@@ -7,6 +7,7 @@ Copyright (c) Geekofia 2021 and beyond
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 import styles from "./YoutubeForm.module.css";
 
 // Steps to add formik to a form:
@@ -22,6 +23,12 @@ const initialValues = {
   channel: "",
   comments: "",
   address: "",
+  social: {
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    github: "",
+  },
 };
 
 // onSubmit function
@@ -90,19 +97,14 @@ const YoutubeFormV2 = () => {
               id="channel"
               placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
             />
-            <ErrorMessage name="channel" component={ErrorComponent} />
-          </div>
-          {/* comments Field (textarea) */}
-          <div className={styles.wrapper_div}>
-            <label htmlFor="comments">Comments</label>
-            <Field
-              as="textarea"
-              // component="textarea"
-              // name attribute is required
-              name="comments"
-              id="comments"
-              placeholder="Express your thoughts..."
-            />
+            {/* Demo using render props */}
+            <ErrorMessage name="channel">
+              {(errorMsg) => (
+                <div className={styles.error_div}>
+                  <p>{errorMsg}</p>
+                </div>
+              )}
+            </ErrorMessage>
           </div>
           {/* address Field (textarea) */}
           {/* render props */}
@@ -114,7 +116,11 @@ const YoutubeFormV2 = () => {
                 ({ field, form, meta }) => {
                   return (
                     <div>
-                      <input type="text" id="address" {...field} />
+                      <textarea
+                        id="address"
+                        placeholder="Cecilia Chapman&#10;711-2880 Nulla St.&#10;Mankato Mississippi 96522&#10;(257) 563-7401"
+                        {...field}
+                      />
                       {meta.touched && meta.error && (
                         <div className="error">{meta.error}</div>
                       )}
@@ -123,6 +129,38 @@ const YoutubeFormV2 = () => {
                 }
               }
             </Field>
+          </div>
+          {/* social */}
+          <div className={styles.social_wrapper}>
+            <div className={styles.social_heading}>
+              <div className={styles.social_bar}></div>
+              <p className={styles.social_title}>Social</p>
+              <div className={styles.social_bar}></div>
+            </div>
+            <div className={styles.handle_wrapper}>
+              <label htmlFor="facebook">
+                <FaFacebook size={32} />
+              </label>
+              <Field type="text" name="social.facebook" id="facebook" />
+            </div>
+            <div className={styles.handle_wrapper}>
+              <label htmlFor="twitter">
+                <FaTwitter size={32} />
+              </label>
+              <Field type="text" name="social.twitter" id="twitter" />
+            </div>
+            <div className={styles.handle_wrapper}>
+              <label htmlFor="instagram">
+                <FaInstagram size={32} />
+              </label>
+              <Field type="text" name="social.instagram" id="instagram" />
+            </div>
+            <div className={styles.handle_wrapper}>
+              <label htmlFor="github">
+                <FaGithub size={32} />
+              </label>
+              <Field type="text" name="social.github" id="github" />
+            </div>
           </div>
           {/* submit button */}
           <div className={styles.wrapper_div}>
