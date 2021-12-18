@@ -72,11 +72,13 @@ const YoutubeForm = () => {
             name="name"
             id="name"
             onChange={formik.handleChange}
+            // keep track of user interaction
+            onBlur={formik.handleBlur}
             // value corresponds to name attribute
             value={formik.values.name}
             placeholder="Chadan Kumar Mandal"
           />
-          {formik.errors.name && (
+          {formik.errors.name && formik.touched.name && (
             <div className={styles.error_div}>
               <p>{formik.errors.name}</p>
             </div>
@@ -91,11 +93,13 @@ const YoutubeForm = () => {
             name="email"
             id="email"
             onChange={formik.handleChange}
+            // keep track of user interaction
+            onBlur={formik.handleBlur}
             // value corresponds to name attribute
             value={formik.values.email}
             placeholder="example@domain.xyz"
           />
-          {formik.errors.email && (
+          {formik.errors.email && formik.touched.email && (
             <div className={styles.error_div}>
               <p>{formik.errors.email}</p>
             </div>
@@ -110,11 +114,13 @@ const YoutubeForm = () => {
             name="channel"
             id="channel"
             onChange={formik.handleChange}
+            // keep track of user interaction
+            onBlur={formik.handleBlur}
             // value corresponds to name attribute
             value={formik.values.channel}
             placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
           />
-          {formik.errors.channel && (
+          {formik.errors.channel && formik.touched.channel && (
             <div className={styles.error_div}>
               <p>{formik.errors.channel}</p>
             </div>
