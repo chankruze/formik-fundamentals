@@ -6,6 +6,7 @@ Copyright (c) Geekofia 2021 and beyond
 */
 
 import { useFormik } from "formik";
+import * as Yup from "yup";
 import styles from "./YoutubeForm.module.css";
 
 // Steps to add formik to a form:
@@ -27,37 +28,47 @@ const onSubmit = (values) => {
 };
 
 // validation function
-const validate = (values) => {
-  // define errors object
-  let errors = {};
+// const validate = (values) => {
+//   // define errors object
+//   let errors = {};
 
-  // rules for name
-  if (!values.name) {
-    errors.name = "Name is required";
-  }
+//   // rules for name
+//   if (!values.name) {
+//     errors.name = "Name is required";
+//   }
 
-  // rules for email
-  if (!values.email) {
-    errors.email = "Email is required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid email format";
-  }
+//   // rules for email
+//   if (!values.email) {
+//     errors.email = "Email is required";
+//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+//     errors.email = "Invalid email format";
+//   }
 
-  // rules for channel
-  if (!values.channel) {
-    errors.channel = "Channel is required";
-  }
+//   // rules for channel
+//   if (!values.channel) {
+//     errors.channel = "Channel is required";
+//   }
 
-  // return errors object
-  return errors;
-};
+//   // return errors object
+//   return errors;
+// };
+
+// step 1: define validation object schema
+const validationSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  channel: Yup.string().required("Channel is required"),
+});
 
 // YoutubeForm component
 const YoutubeForm = () => {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validate,
+    // validate,
+    validationSchema,
   });
 
   return (
