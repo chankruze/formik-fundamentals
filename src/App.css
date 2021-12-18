@@ -1,0 +1,8 @@
+.App {
+  height: 100vh;
+  /* background: #212121;
+  color: #f6f6f6; */
+  background: #f6f6f6;
+  display: grid;
+  place-items: center;
+}
