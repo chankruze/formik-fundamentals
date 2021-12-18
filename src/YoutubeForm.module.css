@@ -26,7 +26,6 @@ Copyright (c) Geekofia 2021 and beyond
 
 .wrapper_div {
   width: 100%;
-  margin: 0.25rem 0;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -39,7 +38,8 @@ label {
   color: #212121;
 }
 
-.input_field {
+input,
+textarea {
   margin: 0.25rem 0;
   padding: 0.75rem;
   width: 100%;
@@ -50,7 +50,7 @@ label {
   color: #212121;
 }
 
-.input_field:focus {
+input:focus {
   outline: 0;
   outline: 3px solid rgb(0, 102, 255);
 }
@@ -79,4 +79,11 @@ button[type="submit"]:hover {
   color: rgb(255, 57, 57);
   text-align: end;
   font-weight: 600;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+  min-height: 100px;
+  max-height: 250px;
 }

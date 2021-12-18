@@ -20,6 +20,8 @@ const initialValues = {
   name: "",
   email: "",
   channel: "",
+  comments: "",
+  address: "",
 };
 
 // onSubmit function
@@ -55,7 +57,6 @@ const YoutubeFormV2 = () => {
               name="name"
               id="name"
               placeholder="Chadan Kumar Mandal"
-              className={styles.input_field}
             />
             <ErrorMessage name="name" />
           </div>
@@ -68,7 +69,6 @@ const YoutubeFormV2 = () => {
               name="email"
               id="email"
               placeholder="example@domain.xyz"
-              className={styles.input_field}
             />
             <ErrorMessage name="email" />
           </div>
@@ -81,9 +81,40 @@ const YoutubeFormV2 = () => {
               name="channel"
               id="channel"
               placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
-              className={styles.input_field}
             />
             <ErrorMessage name="channel" />
+          </div>
+          {/* comments Field (textarea) */}
+          <div className={styles.wrapper_div}>
+            <label htmlFor="comments">Comments</label>
+            <Field
+              as="textarea"
+              // component="textarea"
+              // name attribute is required
+              name="comments"
+              id="comments"
+              placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
+            />
+          </div>
+          {/* address Field (textarea) */}
+          {/* render props */}
+          <div className={styles.wrapper_div}>
+            <label htmlFor="address">Address</label>
+            <Field name="address">
+              {
+                // render props
+                ({ field, form, meta }) => {
+                  return (
+                    <div>
+                      <input type="text" id="address" {...field} />
+                      {meta.touched && meta.error && (
+                        <div className="error">{meta.error}</div>
+                      )}
+                    </div>
+                  );
+                }
+              }
+            </Field>
           </div>
           {/* submit button */}
           <div className={styles.wrapper_div}>
