@@ -40,7 +40,7 @@ const validate = (values) => {
   if (!values.email) {
     errors.email = "Email is required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Email is invalid";
+    errors.email = "Invalid email format";
   }
 
   // rules for channel
@@ -76,6 +76,11 @@ const YoutubeForm = () => {
             value={formik.values.name}
             placeholder="Chadan Kumar Mandal"
           />
+          {formik.errors.name && (
+            <div className={styles.error_div}>
+              <p>{formik.errors.name}</p>
+            </div>
+          )}
         </div>
         {/* email input */}
         <div className={styles.wrapper_div}>
@@ -90,6 +95,11 @@ const YoutubeForm = () => {
             value={formik.values.email}
             placeholder="example@domain.xyz"
           />
+          {formik.errors.email && (
+            <div className={styles.error_div}>
+              <p>{formik.errors.email}</p>
+            </div>
+          )}
         </div>
         {/* channel input */}
         <div className={styles.wrapper_div}>
@@ -104,6 +114,11 @@ const YoutubeForm = () => {
             value={formik.values.channel}
             placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
           />
+          {formik.errors.channel && (
+            <div className={styles.error_div}>
+              <p>{formik.errors.channel}</p>
+            </div>
+          )}
         </div>
         {/* submit button */}
         <div className={styles.wrapper_div}>

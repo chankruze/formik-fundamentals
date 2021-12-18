@@ -71,3 +71,12 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background: rgb(0, 132, 255);
 }
+
+.error_div {
+  /* background: rgb(255, 69, 69); */
+  border-radius: 0.25rem;
+  text-transform: lowercase;
+  color: rgb(255, 57, 57);
+  text-align: end;
+  font-weight: 600;
+}
