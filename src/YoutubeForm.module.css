@@ -132,3 +132,36 @@ textarea {
 .handle_wrapper svg {
   color: #9b9b9b;
 }
+
+.hobby_wrapper {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.hobby_wrapper button {
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: #f00;
+  cursor: pointer;
+}
+
+.btn_add_hobby {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: rgb(0, 160, 120);
+  color: #f6f6f6;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  margin-left: auto;
+}
+
+.btn_add_hobby svg {
+  margin-right: 0.5rem;
+}

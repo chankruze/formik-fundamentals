@@ -6,4 +6,5 @@
   background: #f6f6f6;
   display: grid;
   place-items: center;
+  user-select: none;
 }

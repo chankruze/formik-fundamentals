@@ -5,7 +5,7 @@ Created: Sat Dec 18 2021 10:13:19 GMT+0530 (India Standard Time)
 Copyright (c) Geekofia 2021 and beyond
 */
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 import {
   FaFacebook,
@@ -14,6 +14,8 @@ import {
   FaGithub,
   FaPhone,
   FaPhoneAlt,
+  FaPlus,
+  FaRegTimesCircle,
 } from "react-icons/fa";
 import styles from "./YoutubeForm.module.css";
 
@@ -37,6 +39,7 @@ const initialValues = {
     github: "",
   },
   phoneNumbers: ["", ""],
+  hobbies: [],
 };
 
 // onSubmit function
@@ -220,6 +223,48 @@ const YoutubeFormV2 = () => {
               />
             </div>
           </div>
+
+          <div className={styles.group_wrapper}>
+            <div className={styles.group_heading}>
+              <div className={styles.group_bar}></div>
+              <p className={styles.group_title}>hobbies</p>
+              <div className={styles.group_bar}></div>
+            </div>
+            <FieldArray name="hobbies">
+              {({
+                push,
+                remove,
+                form: {
+                  values: { hobbies },
+                },
+              }) => {
+                console.log(hobbies);
+                return (
+                  <div>
+                    {hobbies.map((hobby, index) => (
+                      <div key={index} className={styles.hobby_wrapper}>
+                        <Field name={`hobbies[${index}]`} />
+                        <button type="button" onClick={() => remove(index)}>
+                          <FaRegTimesCircle size={24} />
+                        </button>
+                      </div>
+                    ))}
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => push("")}
+                        className={styles.btn_add_hobby}
+                      >
+                        <FaPlus size={16} />
+                        <p>Add hobby</p>
+                      </button>
+                    </div>
+                  </div>
+                );
+              }}
+            </FieldArray>
+          </div>
+
           {/* submit button */}
           <div className={styles.wrapper_div}>
             <button type="submit">Submit</button>
