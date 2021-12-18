@@ -1,0 +1,73 @@
+/*
+Author: chankruze (chankruze@geekofia.in)
+Created: Sat Dec 18 2021 10:23:31 GMT+0530 (India Standard Time)
+
+Copyright (c) Geekofia 2021 and beyond
+*/
+
+.form_div {
+  min-width: 400px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  /* background: rgb(56, 56, 56); */
+  background: #fff;
+  padding: 0.5rem;
+}
+
+.wrapper_div {
+  width: 100%;
+  margin: 0.25rem 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #212121;
+}
+
+input {
+  margin: 0.25rem 0;
+  padding: 0.75rem;
+  width: 100%;
+  font-size: 1.2rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: #f6f6f6;
+  color: #212121;
+}
+
+input:focus {
+  outline: 0;
+  outline: 3px solid rgb(0, 102, 255);
+}
+
+button[type="submit"] {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  width: 100%;
+  font-size: 1.2rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: rgb(0, 102, 255);
+  color: #f6f6f6;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background: rgb(0, 132, 255);
+}
