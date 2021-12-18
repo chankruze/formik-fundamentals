@@ -33,9 +33,10 @@ Copyright (c) Geekofia 2021 and beyond
 
 label {
   padding: 0.5rem 0;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #212121;
+  font-family: 'Quicksand', sans-serif;
 }
 
 input,
@@ -43,14 +44,16 @@ textarea {
   margin: 0.25rem 0;
   padding: 0.75rem;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border: 0;
   border-radius: 0.25rem;
   background: #f6f6f6;
   color: #212121;
+  font-family: "Roboto", sans-serif;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   outline: 0;
   outline: 3px solid rgb(0, 102, 255);
 }

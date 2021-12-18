@@ -38,6 +38,14 @@ const validationSchema = Yup.object({
   channel: Yup.string().required("Channel is required"),
 });
 
+const ErrorComponent = ({ children }) => {
+  return (
+    <div className={styles.error_div}>
+      <p>{children}</p>
+    </div>
+  );
+};
+
 // YoutubeFormV2 component
 const YoutubeFormV2 = () => {
   return (
@@ -58,7 +66,7 @@ const YoutubeFormV2 = () => {
               id="name"
               placeholder="Chadan Kumar Mandal"
             />
-            <ErrorMessage name="name" />
+            <ErrorMessage name="name" component={ErrorComponent} />
           </div>
           {/* email Field */}
           <div className={styles.wrapper_div}>
@@ -70,7 +78,7 @@ const YoutubeFormV2 = () => {
               id="email"
               placeholder="example@domain.xyz"
             />
-            <ErrorMessage name="email" />
+            <ErrorMessage name="email" component={ErrorComponent} />
           </div>
           {/* channel Field */}
           <div className={styles.wrapper_div}>
@@ -82,7 +90,7 @@ const YoutubeFormV2 = () => {
               id="channel"
               placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
             />
-            <ErrorMessage name="channel" />
+            <ErrorMessage name="channel" component={ErrorComponent} />
           </div>
           {/* comments Field (textarea) */}
           <div className={styles.wrapper_div}>
@@ -93,7 +101,7 @@ const YoutubeFormV2 = () => {
               // name attribute is required
               name="comments"
               id="comments"
-              placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
+              placeholder="Express your thoughts..."
             />
           </div>
           {/* address Field (textarea) */}
