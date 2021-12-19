@@ -53,7 +53,7 @@ const validationSchema = Yup.object({
   email: Yup.string()
     .email("Invalid email format")
     .required("Email is required"),
-  channel: Yup.string().required("Channel is required"),
+  // channel: Yup.string().required("Channel is required"),
 });
 
 const ErrorComponent = ({ children }) => {
@@ -64,6 +64,14 @@ const ErrorComponent = ({ children }) => {
   );
 };
 
+const validateField = (value) => {
+  let error;
+  if (!value) {
+    error = "This field is required";
+  }
+  return error;
+};
+
 // YoutubeFormV2 component
 const YoutubeFormV2 = () => {
   return (
@@ -72,6 +80,9 @@ const YoutubeFormV2 = () => {
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
+        // can disable validation
+        // validateOnBlur={false}
+        // validateOnChange={false}
       >
         <Form className={styles.form}>
           {/* name Field */}
@@ -107,21 +118,29 @@ const YoutubeFormV2 = () => {
               name="channel"
               id="channel"
               placeholder="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"
+              // Field level validation
+              validate={validateField}
             />
+            {/* field level validation */}
+            <ErrorMessage name="channel" component={ErrorComponent} />
             {/* Demo using render props */}
-            <ErrorMessage name="channel">
+            {/* <ErrorMessage name="channel">
               {(errorMsg) => (
                 <div className={styles.error_div}>
                   <p>{errorMsg}</p>
                 </div>
               )}
-            </ErrorMessage>
+            </ErrorMessage> */}
           </div>
           {/* address Field (textarea) */}
           {/* render props */}
           <div className={styles.wrapper_div}>
             <label htmlFor="address">Address</label>
-            <Field name="address">
+            <Field
+              name="address"
+              // Field level validation
+              validate={validateField}
+            >
               {
                 // render props
                 ({ field, form, meta }) => {
@@ -133,7 +152,9 @@ const YoutubeFormV2 = () => {
                         {...field}
                       />
                       {meta.touched && meta.error && (
-                        <div className="error">{meta.error}</div>
+                        <div className={styles.error_div}>
+                          <p>{meta.error}</p>
+                        </div>
                       )}
                     </div>
                   );
