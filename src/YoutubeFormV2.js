@@ -63,6 +63,8 @@ const onSubmit = (values, onSubmitProps) => {
   console.log(values);
   // TODO: add wait for API call to return
   onSubmitProps.setSubmitting(false);
+  // may clear the fields
+  onSubmitProps.resetForm();
 };
 
 // step 1: define validation object schema
@@ -346,6 +348,7 @@ const YoutubeFormV2 = () => {
               <button type="button" onClick={() => setFormValues(savedData)}>
                 load saved data
               </button>
+              <button type="reset">reset form</button>
             </div>
             {/* submit button */}
             <div className={styles.wrapper_div}>

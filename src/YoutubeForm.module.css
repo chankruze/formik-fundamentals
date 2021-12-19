@@ -81,6 +81,24 @@ textarea:focus {
   text-transform: capitalize;
 }
 
+button[type="reset"] {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  width: 100%;
+  font-size: 1.1rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: rgb(255, 0, 0);
+  color: #f6f6f6;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-transform: capitalize;
+}
+
+button[type="reset"]:hover {
+  background: rgb(207, 0, 0);
+}
+
 button[type="submit"] {
   margin-top: 0.5rem;
   padding: 0.75rem;
