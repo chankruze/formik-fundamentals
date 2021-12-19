@@ -18,6 +18,7 @@ import {
   FaRegTimesCircle,
 } from "react-icons/fa";
 import styles from "./YoutubeForm.module.css";
+import { useState } from "react";
 
 // Steps to add formik to a form:
 // 1. pass initial values object to formik
@@ -30,7 +31,6 @@ const initialValues = {
   name: "",
   email: "",
   channel: "",
-  comments: "",
   address: "",
   social: {
     facebook: "",
@@ -40,6 +40,22 @@ const initialValues = {
   },
   phoneNumbers: ["", ""],
   hobbies: [],
+};
+
+// mock data
+const savedData = {
+  name: "Chandan Kumar Mandal",
+  email: "chankruze@gmail.com",
+  channel: "geekofia",
+  address: "Zobra, Cuttack - 753003",
+  social: {
+    facebook: "chankruze",
+    twitter: "chankruze",
+    instagram: "chankruze",
+    github: "chankruze",
+  },
+  phoneNumbers: ["8144356767", "9205639328"],
+  hobbies: ["tv-series", "reading", "comedy"],
 };
 
 // onSubmit function
@@ -83,16 +99,19 @@ const checkIfEmailExistsOnDb = (email) => {
 
 // YoutubeFormV2 component
 const YoutubeFormV2 = () => {
+  const [formValues, setFormValues] = useState(null);
+
   return (
     <div className={styles.form_div}>
       <Formik
-        initialValues={initialValues}
+        initialValues={formValues || initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
         // can disable validation
         // validateOnBlur={false}
         // validateOnChange={false}
         // validateOnMount (not recommended)
+        enableReinitialize
       >
         {(formik) => (
           <Form className={styles.form}>
@@ -300,7 +319,7 @@ const YoutubeFormV2 = () => {
             {/* validation buttons */}
             <div className={styles.validation_div}>
               {/* validate field */}
-              <button
+              {/* <button
                 type="button"
                 onClick={() => {
                   formik.setFieldTouched("channel");
@@ -308,9 +327,9 @@ const YoutubeFormV2 = () => {
                 }}
               >
                 validate channel
-              </button>
+              </button> */}
               {/* validate all */}
-              <button
+              {/* <button
                 type="button"
                 onClick={() => {
                   formik.setTouched({
@@ -323,6 +342,9 @@ const YoutubeFormV2 = () => {
                 }}
               >
                 validate form
+              </button> */}
+              <button type="button" onClick={() => setFormValues(savedData)}>
+                load saved data
               </button>
             </div>
             {/* submit button */}
