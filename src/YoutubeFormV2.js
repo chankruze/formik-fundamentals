@@ -72,6 +72,13 @@ const validateField = (value) => {
   return error;
 };
 
+// TODO: add validation for unique email/username (check the db)
+// eslint-disable-next-line no-unused-vars
+const checkIfEmailExistsOnDb = (email) => {
+  // TODO: check if email exists on db
+  return false;
+};
+
 // YoutubeFormV2 component
 const YoutubeFormV2 = () => {
   return (
