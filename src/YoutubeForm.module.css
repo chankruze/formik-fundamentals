@@ -98,6 +98,12 @@ button[type="submit"]:hover {
   background: rgb(0, 132, 255);
 }
 
+button[type="submit"]:disabled {
+  background: rgb(218, 218, 218);
+  color: #f6f6f6;
+  cursor: not-allowed;
+}
+
 .error_div {
   /* background: rgb(255, 69, 69); */
   border-radius: 0.25rem;

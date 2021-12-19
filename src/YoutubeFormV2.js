@@ -90,6 +90,7 @@ const YoutubeFormV2 = () => {
         // can disable validation
         // validateOnBlur={false}
         // validateOnChange={false}
+        // validateOnMount (not recommended)
       >
         {(formik) => (
           <Form className={styles.form}>
@@ -324,7 +325,13 @@ const YoutubeFormV2 = () => {
             </div>
             {/* submit button */}
             <div className={styles.wrapper_div}>
-              <button type="submit">Submit</button>
+              <button
+                type="submit"
+                // for dirty (initialize fields with empty values)
+                disabled={!(formik.isValid && formik.dirty)}
+              >
+                Submit
+              </button>
             </div>
           </Form>
         )}
