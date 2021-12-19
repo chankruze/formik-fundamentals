@@ -43,8 +43,10 @@ const initialValues = {
 };
 
 // onSubmit function
-const onSubmit = (values) => {
+const onSubmit = (values, onSubmitProps) => {
   console.log(values);
+  // TODO: add wait for API call to return
+  onSubmitProps.setSubmitting(false);
 };
 
 // step 1: define validation object schema
@@ -328,7 +330,9 @@ const YoutubeFormV2 = () => {
               <button
                 type="submit"
                 // for dirty (initialize fields with empty values)
-                disabled={!(formik.isValid && formik.dirty)}
+                disabled={
+                  !(formik.isValid && formik.dirty) || formik.isSubmitting
+                }
               >
                 Submit
               </button>
